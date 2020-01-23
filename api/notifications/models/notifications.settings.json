@@ -1,0 +1,23 @@
+{
+  "info": {
+    "name": "notifications"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "offering": {
+      "model": "offerings"
+    },
+    "wasRead": {
+      "type": "boolean"
+    }
+  },
+  "connection": "default",
+  "collectionName": "notifications"
+}

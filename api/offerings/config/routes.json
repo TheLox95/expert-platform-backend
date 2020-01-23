@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/offerings/following",
+      "handler": "offerings.following",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/offerings",
       "handler": "offerings.find",
       "config": {
