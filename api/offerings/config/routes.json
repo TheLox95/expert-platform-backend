@@ -1,6 +1,32 @@
 {
   "routes": [
     {
+      "method": "DELETE",
+      "path": "/offerings/files/:id",
+      "handler": "offerings.destroyFile",
+      "config": {
+        "policies": [],
+        "description": "Delete an uploaded file",
+        "tag": {
+          "plugin": "upload",
+          "name": "File"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/offerings/upload",
+      "handler": "offerings.upload",
+      "config": {
+        "policies": [],
+        "description": "Upload a file",
+        "tag": {
+          "plugin": "upload",
+          "name": "File"
+        }
+      }
+    },
+    {
       "method": "GET",
       "path": "/offerings/following",
       "handler": "offerings.following",
