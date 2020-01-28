@@ -7,6 +7,7 @@
 const _ = require('lodash');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
+const { sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
   async find(ctx) {
@@ -22,7 +23,15 @@ module.exports = {
 
     // Send 200 `ok`
     ctx.send(offerings);
-},
+  },
+  async findOne(ctx) {
+    const entity = await strapi.services.offerings.findOne(ctx.params);
+    entity.videos = entity.videos.map(v => ({ ...v, thumbnail: `/uploads/${v.name.split('.')[0]}.png`}));
+    const data = sanitizeEntity(entity, { model: strapi.models.offerings });
+
+    // Send 200 `ok`
+    ctx.send(data);
+  },
     following: async (ctx) => {
         const currentUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: 11 })
         const followedUser = await Promise.all(currentUser.following.map(u => {
