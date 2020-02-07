@@ -21,6 +21,10 @@
     "user": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "offering": {
+      "via": "opinions",
+      "model": "offerings"
     }
   }
 }

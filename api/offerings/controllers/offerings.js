@@ -14,7 +14,9 @@ module.exports = {
 
     const offerings = (await strapi.services.offerings.find(ctx.query))
     .map((o) => {
-      delete o.user.password;
+      if (o.user) {
+        delete o.user.password;
+      }
       return {
         ...o,
         videos: o.videos.map(v => ({ ...v, thumbnail: `/uploads/${v.name.split('.')[0]}.png`}))
@@ -176,9 +178,9 @@ module.exports = {
         }
     
         const uploadedFiles = await uploadService.upload(enhancedFiles, config);
-    
+
         // Send 200 `ok`
-        ctx.send(uploadedFiles.map(f => ({ ...f, thumbnail: `/uploads/${f.name}.png` })));
+        ctx.send(uploadedFiles.map(f => ({ ...f, thumbnail: `/uploads/${f.name.split('.')[0]}.png` })));
     },
     async destroyFile(ctx) {
       const { id } = ctx.params;

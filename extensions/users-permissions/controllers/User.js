@@ -7,6 +7,11 @@ const sanitizeUser = user =>
 
 module.exports = {
     async findOne(ctx) {
+      if (!ctx.state.user) {
+        return ctx.badRequest(null, [
+          { messages: [{ id: 'No authorization header was found' }] },
+        ]);
+      }
         const { id } = ctx.params;
         let data = await strapi.plugins['users-permissions'].services.user.fetch({
           id,

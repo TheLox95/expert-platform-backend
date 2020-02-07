@@ -30,7 +30,8 @@
       "required": true
     },
     "opinions": {
-      "collection": "opinion"
+      "collection": "opinion",
+      "via": "offering"
     },
     "user": {
       "plugin": "users-permissions",
