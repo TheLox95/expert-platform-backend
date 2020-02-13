@@ -1,0 +1,3 @@
+[submodule "plugins/strapi-test-plugin"]
+	path = plugins/strapi-test-plugin
+	url = https://github.com/TheLox95/strapi-test-plugin.git

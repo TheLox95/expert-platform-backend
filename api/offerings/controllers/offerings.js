@@ -35,7 +35,7 @@ module.exports = {
     ctx.send(data);
   },
     following: async (ctx) => {
-        const currentUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: 11 })
+        const currentUser = await strapi.plugins['users-permissions'].services.user.fetch({ id: ctx.state.user.id })
         const followedUser = await Promise.all(currentUser.following.map(u => {
             return strapi.plugins['users-permissions'].services.user.fetch({ id: u.id })
         }))
