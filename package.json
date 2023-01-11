@@ -13,7 +13,7 @@
   "devDependencies": {},
   "dependencies": {
     "fluent-ffmpeg": "^2.1.2",
-    "knex": "<0.20.0",
+    "knex": "<2.5.0",
     "sqlite3": "latest",
     "strapi": "3.0.0-beta.18.3",
     "strapi-admin": "3.0.0-beta.18.3",
